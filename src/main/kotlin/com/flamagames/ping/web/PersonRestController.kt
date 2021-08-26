@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping(URL_BASE_PERSONAS, consumes = ["application/json"])
+@RequestMapping(URL_BASE_PERSONAS)
 class PersonRestController {
 
     @Autowired
