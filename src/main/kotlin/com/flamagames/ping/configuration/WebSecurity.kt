@@ -28,24 +28,20 @@ class WebSecurity : WebSecurityConfigurerAdapter() {
     }
 
     override fun configure(http: HttpSecurity?) {
-        try {
-            http?.let {
-                super.configure(http)
-                http.csrf().disable().authorizeRequests()
-                    .antMatchers(LOGIN_URL).permitAll()
-                    .anyRequest().authenticated()
-                    .and()
-                    .addFilterBefore(
-                        LoginFilter(LOGIN_URL, authenticationManager()),
-                        UsernamePasswordAuthenticationFilter::class.java
-                    )
-                    .addFilterBefore(
-                        JwtFilter(),
-                        UsernamePasswordAuthenticationFilter::class.java
-                    )
-            }
-        } catch (e: Exception) {
-            throw LoginNullPointException()
+        http?.let {
+            super.configure(http)
+            http.csrf().disable().authorizeRequests()
+                .antMatchers(LOGIN_URL).permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .addFilterBefore(
+                    LoginFilter(LOGIN_URL, authenticationManager()),
+                    UsernamePasswordAuthenticationFilter::class.java
+                )
+                .addFilterBefore(
+                    JwtFilter(),
+                    UsernamePasswordAuthenticationFilter::class.java
+                )
         }
     }
 
