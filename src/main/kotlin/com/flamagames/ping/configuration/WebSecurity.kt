@@ -21,29 +21,29 @@ class WebSecurity : WebSecurityConfigurerAdapter() {
 
     override fun configure(auth: AuthenticationManagerBuilder?) {
         //TODO - Revisar que onda passwordEncoder
-        try {
+        auth?.let {
             super.configure(auth)
-            auth!!.userDetailsService(service)
-        } catch (e: Exception) {
-            throw LoginNullPointException()
+            auth.userDetailsService(service)
         }
     }
 
     override fun configure(http: HttpSecurity?) {
         try {
-            super.configure(http)
-            http!!.csrf().disable().authorizeRequests()
-                .antMatchers(LOGIN_URL).permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .addFilterBefore(
-                    LoginFilter(LOGIN_URL, authenticationManager()),
-                    UsernamePasswordAuthenticationFilter::class.java
-                )
-                .addFilterBefore(
-                    JwtFilter(),
-                    UsernamePasswordAuthenticationFilter::class.java
-                )
+            http?.let {
+                super.configure(http)
+                http.csrf().disable().authorizeRequests()
+                    .antMatchers(LOGIN_URL).permitAll()
+                    .anyRequest().authenticated()
+                    .and()
+                    .addFilterBefore(
+                        LoginFilter(LOGIN_URL, authenticationManager()),
+                        UsernamePasswordAuthenticationFilter::class.java
+                    )
+                    .addFilterBefore(
+                        JwtFilter(),
+                        UsernamePasswordAuthenticationFilter::class.java
+                    )
+            }
         } catch (e: Exception) {
             throw LoginNullPointException()
         }
