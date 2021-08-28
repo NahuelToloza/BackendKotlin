@@ -10,6 +10,7 @@ import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.Authentication
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter
+import javax.annotation.Resource
 import javax.servlet.FilterChain
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
@@ -19,12 +20,12 @@ class LoginFilter(
     authenticationManager: AuthenticationManager
 ) : AbstractAuthenticationProcessingFilter(url, authenticationManager) {
 
-    @Autowired
+    @Resource
     private var objectMapper: ObjectMapper? = null
     private val mapper: ObjectMapper
         get() = objectMapper!!
 
-    @Autowired
+    @Resource
     private var jwtGenerator: JwtGenerator? = null
 
     override fun attemptAuthentication(request: HttpServletRequest?, response: HttpServletResponse?): Authentication {

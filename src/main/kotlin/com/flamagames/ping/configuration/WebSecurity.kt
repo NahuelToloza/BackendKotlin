@@ -19,7 +19,6 @@ class WebSecurity : WebSecurityConfigurerAdapter() {
     val service: UserService
         get() = userService!!
 
-
     override fun configure(auth: AuthenticationManagerBuilder?) {
         //TODO - Revisar que onda passwordEncoder
         try {
@@ -50,7 +49,7 @@ class WebSecurity : WebSecurityConfigurerAdapter() {
         }
     }
 
-    companion object{
+    companion object {
         private const val LOGIN_URL = "/login"
         const val AUTHORIZATION_HEADER = "Authorization"
     }
