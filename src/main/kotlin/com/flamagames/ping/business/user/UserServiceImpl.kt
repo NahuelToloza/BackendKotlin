@@ -20,7 +20,7 @@ class UserServiceImpl: UserService {
 
     override fun loadUserByUsername(userName: String?): UserDetails {
         userName?.let {
-            val user = repository.findByUserName(userName)
+            val user = repository.findAll().firstOrNull{ it.name == userName }!!
             return User(user.name, user.password, user.isActive, user.isActive, user.isActive, user.isActive, grantedRole(user.role))
         } ?: run {
             throw NotFoundException("The user is invalid")
