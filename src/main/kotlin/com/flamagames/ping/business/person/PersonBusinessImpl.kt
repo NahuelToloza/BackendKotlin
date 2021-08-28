@@ -1,9 +1,9 @@
-package com.flamagames.ping.business
+package com.flamagames.ping.business.person
 
 import com.flamagames.ping.dao.PersonRepository
 import com.flamagames.ping.exception.BusinessException
 import com.flamagames.ping.exception.NotFoundException
-import com.flamagames.ping.models.Person
+import com.flamagames.ping.models.entities.Person
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.*

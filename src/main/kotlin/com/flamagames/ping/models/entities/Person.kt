@@ -1,4 +1,4 @@
-package com.flamagames.ping.models
+package com.flamagames.ping.models.entities
 
 import javax.persistence.*
 
@@ -11,5 +11,6 @@ data class Person(
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "person_id")
     var id: Long = 0
 }

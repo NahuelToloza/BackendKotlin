@@ -1,6 +1,6 @@
-package com.flamagames.ping.business
+package com.flamagames.ping.business.person
 
-import com.flamagames.ping.models.Person
+import com.flamagames.ping.models.entities.Person
 
 interface PersonBusiness {
     fun list(): List<Person>

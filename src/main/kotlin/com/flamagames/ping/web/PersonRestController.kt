@@ -1,9 +1,9 @@
 package com.flamagames.ping.web
 
-import com.flamagames.ping.business.PersonBusiness
+import com.flamagames.ping.business.person.PersonBusiness
 import com.flamagames.ping.exception.BusinessException
 import com.flamagames.ping.exception.NotFoundException
-import com.flamagames.ping.models.Person
+import com.flamagames.ping.models.entities.Person
 import com.flamagames.ping.utils.Constants.Companion.URL_BASE_PERSONAS
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpHeaders

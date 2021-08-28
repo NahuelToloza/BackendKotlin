@@ -1,7 +1,7 @@
 package com.flamagames.ping
 
 import com.flamagames.ping.dao.PersonRepository
-import com.flamagames.ping.models.Person
+import com.flamagames.ping.models.entities.Person
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
